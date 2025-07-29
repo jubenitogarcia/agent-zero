@@ -2,7 +2,15 @@ services:
   agent-zero:
     container_name: agent-zero
     image: agent0ai/agent-zero:latest
+    privileged: true
+    user: "0:0"
     volumes:
-      - ./agent-zero:/a0
+      - "/Users/jubenitogarcia/Automation:/a0"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
-      - "50080:80"
+      - "80:80"
+      - "22:22"
+      - "8080:8080"
+      - "5173:5173"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
