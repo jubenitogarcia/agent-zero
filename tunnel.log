@@ -1,0 +1,21 @@
+2025-07-29T22:27:21Z INF Starting tunnel tunnelID=6d1245d3-1ecb-4220-a64d-636d5ce259dc
+2025-07-29T22:27:21Z INF Version 2025.7.0 (Checksum 2338d4605adbc66185d44ca1d9cc338be8e6e9ec978d59517ce47f1d9658955d)
+2025-07-29T22:27:21Z INF GOOS: darwin, GOVersion: go1.24.4, GoArch: arm64
+2025-07-29T22:27:21Z INF Settings: map[config:cloudflared.yml cred-file:/Users/jubenitogarcia/.cloudflared/6d1245d3-1ecb-4220-a64d-636d5ce259dc.json credentials-file:/Users/jubenitogarcia/.cloudflared/6d1245d3-1ecb-4220-a64d-636d5ce259dc.json]
+2025-07-29T22:27:21Z INF cloudflared will not automatically update if installed by a package manager.
+2025-07-29T22:27:21Z INF Generated Connector ID: 9f5b3e6d-05ea-496f-89ff-cfdb649a7122
+2025-07-29T22:27:21Z INF Initial protocol quic
+2025-07-29T22:27:21Z INF ICMP proxy will use 192.168.15.91 as source for IPv4
+2025-07-29T22:27:21Z INF ICMP proxy will use fe80::1cd3:9a2a:ed09:efc1 in zone en0 as source for IPv6
+2025-07-29T22:27:21Z INF Created ICMP proxy listening on 192.168.15.91:0
+2025-07-29T22:27:21Z INF ICMP proxy will use 192.168.15.91 as source for IPv4
+2025-07-29T22:27:21Z INF ICMP proxy will use fe80::1cd3:9a2a:ed09:efc1 in zone en0 as source for IPv6
+2025-07-29T22:27:21Z INF Starting metrics server on 127.0.0.1:20241/metrics
+2025-07-29T22:27:21Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.33
+2025-07-29T22:27:21Z INF Registered tunnel connection connIndex=0 connection=897ce23d-c0db-45fe-a788-b128e9dd938a event=0 ip=198.41.200.33 location=gru17 protocol=quic
+2025-07-29T22:27:21Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.67
+2025-07-29T22:27:22Z INF Registered tunnel connection connIndex=1 connection=ce19f2c5-f57d-4d07-8a27-68dbede7d29c event=0 ip=198.41.192.67 location=gru14 protocol=quic
+2025-07-29T22:27:22Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.193
+2025-07-29T22:27:23Z INF Registered tunnel connection connIndex=2 connection=d62d6bbd-c04a-467d-a0cc-aca7aa4b7644 event=0 ip=198.41.200.193 location=gru18 protocol=quic
+2025-07-29T22:27:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.107
+2025-07-29T22:27:24Z INF Registered tunnel connection connIndex=3 connection=f4a11bc9-ada6-4d5c-84c3-a38f89aedb2c event=0 ip=198.41.192.107 location=gru14 protocol=quic

@@ -9,6 +9,9 @@ from python.helpers.dotenv import get_dotenv_value
 
 
 class Poll(ApiHandler):
+    @classmethod
+    def requires_csrf(cls) -> bool:
+        return False
 
     async def process(self, input: dict, request: Request) -> dict | Response:
         ctxid = input.get("context", None)

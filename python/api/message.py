@@ -9,6 +9,10 @@ from python.helpers.print_style import PrintStyle
 
 
 class Message(ApiHandler):
+    @classmethod
+    def requires_csrf(cls) -> bool:
+        return False
+
     async def process(self, input: dict, request: Request) -> dict | Response:
         task, context = await self.communicate(input=input, request=request)
         return await self.respond(task, context)

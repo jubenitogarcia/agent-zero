@@ -2,6 +2,10 @@ from python.helpers.api import ApiHandler, Request, Response
 
 
 class GetHistory(ApiHandler):
+    @classmethod
+    def requires_csrf(cls) -> bool:
+        return False
+
     async def process(self, input: dict, request: Request) -> dict | Response:
         ctxid = input.get("context", [])
         context = self.get_context(ctxid)

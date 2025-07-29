@@ -4,6 +4,10 @@ from werkzeug.utils import secure_filename
 
 
 class UploadFile(ApiHandler):
+    @classmethod
+    def requires_csrf(cls) -> bool:
+        return False
+
     async def process(self, input: dict, request: Request) -> dict | Response:
         if "file" not in request.files:
             raise Exception("No file part")
