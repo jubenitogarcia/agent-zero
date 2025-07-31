@@ -19,3 +19,149 @@
 2025-07-29T22:27:23Z INF Registered tunnel connection connIndex=2 connection=d62d6bbd-c04a-467d-a0cc-aca7aa4b7644 event=0 ip=198.41.200.193 location=gru18 protocol=quic
 2025-07-29T22:27:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.107
 2025-07-29T22:27:24Z INF Registered tunnel connection connIndex=3 connection=f4a11bc9-ada6-4d5c-84c3-a38f89aedb2c event=0 ip=198.41.192.107 location=gru14 protocol=quic
+2025-07-29T23:39:36Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=3 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-29T23:39:36Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=3 dest=https://a0.skincos.com.br/poll event=0 ip=198.41.192.107 type=http
+2025-07-29T23:49:09Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=3 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-29T23:49:09Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=3 dest=https://a0.skincos.com.br/poll event=0 ip=198.41.192.107 type=http
+2025-07-30T00:26:18Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=2 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T00:26:18Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=2 dest=https://a0.skincos.com.br/transcribe event=0 ip=198.41.200.193 type=http
+2025-07-30T00:27:47Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=2 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T00:27:47Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=2 dest=https://a0.skincos.com.br/transcribe event=0 ip=198.41.200.193 type=http
+2025-07-30T00:27:48Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: net/http: HTTP/1.x transport connection broken: http: ContentLength=94 with Body length 0" connIndex=3 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T00:27:48Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: net/http: HTTP/1.x transport connection broken: http: ContentLength=94 with Body length 0" connIndex=3 dest=https://a0.skincos.com.br/poll event=0 ip=198.41.192.107 type=http
+2025-07-30T00:27:54Z WRN Failed to serve tunnel connection error="context canceled" connIndex=1 event=0 ip=198.41.192.67
+2025-07-30T00:27:54Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.67
+2025-07-30T00:27:54Z WRN Connection terminated error="context canceled" connIndex=1
+2025-07-30T00:28:02Z WRN Failed to serve tunnel connection error="context canceled" connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T00:28:02Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T00:28:04Z WRN Connection terminated error="context canceled" connIndex=3
+2025-07-30T00:28:05Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T00:28:05Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.67
+2025-07-30T00:28:05Z INF Registered tunnel connection connIndex=1 connection=8db2dd19-bbe7-4612-ba9c-c69cb1835084 event=0 ip=198.41.192.67 location=gru07 protocol=quic
+2025-07-30T00:28:06Z INF Registered tunnel connection connIndex=3 connection=f62bce85-fd9b-4f50-bbe4-a4c49151c400 event=0 ip=198.41.192.107 location=gru19 protocol=quic
+2025-07-30T00:28:49Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=3 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T00:28:49Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=3 dest=https://a0.skincos.com.br/transcribe event=0 ip=198.41.192.107 type=http
+2025-07-30T03:20:08Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.33
+2025-07-30T03:20:08Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.33
+2025-07-30T03:20:08Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.33
+2025-07-30T03:20:08Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T03:20:13Z WRN Failed to dial a quic connection error="failed to dial to edge with quic: timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T03:20:13Z INF Retrying connection in up to 4s connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T03:20:14Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T03:20:15Z INF Registered tunnel connection connIndex=0 connection=56bb97a4-fa9d-4d87-a0f6-ef5120f437b1 event=0 ip=198.41.200.73 location=gru17 protocol=quic
+2025-07-30T07:03:18Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.67
+2025-07-30T07:03:18Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.67
+2025-07-30T07:03:18Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.67
+2025-07-30T07:03:18Z WRN Failed to serve tunnel connection error="context canceled" connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:03:18Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:03:19Z WRN Failed to serve tunnel connection error="context canceled" connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:03:19Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:03:19Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:03:19Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:03:19Z ERR Connection terminated error="context canceled" connIndex=0
+2025-07-30T07:03:19Z ERR Connection terminated error="context canceled" connIndex=2
+2025-07-30T07:03:20Z ERR Connection terminated error="context canceled" connIndex=3
+2025-07-30T07:03:20Z ERR Connection terminated error="timeout: no recent network activity" connIndex=1
+2025-07-30T07:03:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:03:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.7
+2025-07-30T07:03:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:03:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:03:24Z INF Registered tunnel connection connIndex=2 connection=7fa23d6d-a53b-4bda-9c7f-e9b1f045d03c event=0 ip=198.41.200.193 location=gru18 protocol=quic
+2025-07-30T07:03:24Z INF Registered tunnel connection connIndex=3 connection=f7de872d-764a-4999-9f7e-7a1973f32054 event=0 ip=198.41.192.107 location=gru14 protocol=quic
+2025-07-30T07:03:24Z INF Registered tunnel connection connIndex=1 connection=9fc25b7b-587a-4724-a982-cf9e0437a582 event=0 ip=198.41.192.7 location=gru14 protocol=quic
+2025-07-30T07:03:24Z INF Registered tunnel connection connIndex=0 connection=3b5b45be-a18c-4c1d-a54e-9d8ff732047d event=0 ip=198.41.200.73 location=gru17 protocol=quic
+2025-07-30T07:24:40Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.7
+2025-07-30T07:24:40Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=1 event=0 ip=198.41.192.7
+2025-07-30T07:24:40Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.7
+2025-07-30T07:24:40Z WRN Failed to serve tunnel connection error="context canceled" connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:24:40Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:24:41Z WRN Failed to serve tunnel connection error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:24:41Z WRN Serve tunnel error error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:24:41Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:24:41Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:24:41Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:24:41Z ERR Connection terminated error="timeout: no recent network activity" connIndex=1
+2025-07-30T07:24:41Z ERR Connection terminated error="context canceled" connIndex=2
+2025-07-30T07:24:42Z ERR Connection terminated error="failed to accept QUIC stream: timeout: no recent network activity" connIndex=3
+2025-07-30T07:24:42Z ERR Connection terminated error="context canceled" connIndex=0
+2025-07-30T07:24:58Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:24:58Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:24:58Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.37
+2025-07-30T07:24:58Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:24:59Z INF Registered tunnel connection connIndex=1 connection=a4cc5fc0-ea74-4fed-99b6-335e6c27f1a8 event=0 ip=198.41.192.37 location=gru14 protocol=quic
+2025-07-30T07:24:59Z INF Registered tunnel connection connIndex=3 connection=7bfca87e-da4c-423c-ac43-532824d54788 event=0 ip=198.41.192.107 location=gru14 protocol=quic
+2025-07-30T07:24:59Z INF Registered tunnel connection connIndex=2 connection=e3f2b048-31ab-4531-a205-5305c366f90b event=0 ip=198.41.200.193 location=gru18 protocol=quic
+2025-07-30T07:25:00Z INF Registered tunnel connection connIndex=0 connection=6098044d-a4fc-4fa6-b166-173ab26292a2 event=0 ip=198.41.200.73 location=gru17 protocol=quic
+2025-07-30T07:45:04Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:45:04Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:45:04Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:45:04Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:45:04Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:45:04Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:45:04Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T07:45:04Z INF Retrying connection in up to 1s connIndex=3 event=0 ip=198.41.192.107
+2025-07-30T07:45:04Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T07:45:04Z ERR Failed to serve tunnel connection error="context canceled" connIndex=1 event=0 ip=198.41.192.37
+2025-07-30T07:45:04Z INF Retrying connection in up to 1s connIndex=1 event=0 ip=198.41.192.37
+2025-07-30T07:45:04Z ERR Connection terminated error="timeout: no recent network activity" connIndex=2
+2025-07-30T07:45:04Z ERR Connection terminated error="timeout: no recent network activity" connIndex=3
+2025-07-30T07:45:05Z ERR Connection terminated error="context canceled" connIndex=1
+2025-07-30T07:45:06Z ERR Connection terminated error="timeout: no recent network activity" connIndex=0
+2025-07-30T07:45:13Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.73
+2025-07-30T07:45:13Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=1 event=0 ip=198.41.192.37
+2025-07-30T07:45:13Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T07:45:13Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=3 event=0 ip=198.41.192.57
+2025-07-30T07:45:14Z INF Registered tunnel connection connIndex=2 connection=c2dd5b4d-5083-445c-a244-f0e9df997e9c event=0 ip=198.41.200.73 location=gru19 protocol=quic
+2025-07-30T07:45:14Z INF Registered tunnel connection connIndex=0 connection=103db8d8-6ea6-48a0-b232-91ab540ee2c7 event=0 ip=198.41.200.63 location=gru02 protocol=quic
+2025-07-30T07:45:14Z INF Registered tunnel connection connIndex=3 connection=fd78968d-6e11-47f4-938b-2b2e8df33ed8 event=0 ip=198.41.192.57 location=gru14 protocol=quic
+2025-07-30T07:45:14Z INF Registered tunnel connection connIndex=1 connection=c7eb3f07-e2a3-44d0-9b07-204ec06334d2 event=0 ip=198.41.192.37 location=gru14 protocol=quic
+2025-07-30T12:05:29Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T12:05:29Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://a0.skincos.com.br/tunnel_proxy event=0 ip=198.41.192.37 type=http
+2025-07-30T12:05:29Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T12:05:29Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://a0.skincos.com.br/settings_get event=0 ip=198.41.200.63 type=http
+2025-07-30T12:05:29Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=2 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T12:05:29Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=2 dest=https://a0.skincos.com.br/scheduler_tasks_list event=0 ip=198.41.200.73 type=http
+2025-07-30T12:32:48Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.73
+2025-07-30T12:32:48Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.73
+2025-07-30T12:32:48Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.73
+2025-07-30T12:32:48Z WRN Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T12:32:48Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T12:32:48Z WRN Connection terminated error="context canceled" connIndex=0
+2025-07-30T12:32:48Z WRN Connection terminated error="timeout: no recent network activity" connIndex=2
+2025-07-30T12:32:52Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: net/http: HTTP/1.x transport connection broken: http: ContentLength=94 with Body length 0" connIndex=1 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T12:32:52Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: net/http: HTTP/1.x transport connection broken: http: ContentLength=94 with Body length 0" connIndex=1 dest=https://a0.skincos.com.br/poll event=0 ip=198.41.192.37 type=http
+2025-07-30T12:32:55Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.23
+2025-07-30T12:32:55Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T12:32:56Z INF Registered tunnel connection connIndex=0 connection=939902c8-9e2d-43a6-b01e-5c3de21971d4 event=0 ip=198.41.200.63 location=gru02 protocol=quic
+2025-07-30T12:32:56Z INF Registered tunnel connection connIndex=2 connection=251bb875-a4ec-4daf-8b18-f8d9ce5508a2 event=0 ip=198.41.200.23 location=gru02 protocol=quic
+2025-07-30T12:38:31Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T12:38:31Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T12:38:31Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.63
+2025-07-30T12:38:31Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.23
+2025-07-30T12:38:31Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.23
+2025-07-30T12:38:31Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.23
+2025-07-30T12:38:32Z WRN Connection terminated error="timeout: no recent network activity" connIndex=0
+2025-07-30T12:38:32Z WRN Connection terminated error="timeout: no recent network activity" connIndex=2
+2025-07-30T12:38:34Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.43
+2025-07-30T12:38:34Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T12:38:35Z INF Registered tunnel connection connIndex=0 connection=a3a97010-7a4f-41e1-8269-9fd36462a032 event=0 ip=198.41.200.43 location=gru17 protocol=quic
+2025-07-30T12:38:35Z INF Registered tunnel connection connIndex=2 connection=eeb1ce1a-5276-485d-a055-4af9010fb351 event=0 ip=198.41.200.193 location=gru18 protocol=quic
+2025-07-30T12:38:35Z ERR  error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: net/http: HTTP/1.x transport connection broken: http: ContentLength=94 with Body length 0" connIndex=3 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T12:38:36Z ERR Request failed error="Unable to reach the origin service. The service may be down or it may not be responding to traffic from cloudflared: net/http: HTTP/1.x transport connection broken: http: ContentLength=94 with Body length 0" connIndex=3 dest=https://a0.skincos.com.br/poll event=0 ip=198.41.192.57 type=http
+2025-07-30T13:06:55Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=1 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T13:06:55Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=1 dest=https://a0.skincos.com.br/settings_get event=0 ip=198.41.192.37 type=http
+2025-07-30T13:21:33Z WRN Failed to serve tunnel connection error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.43
+2025-07-30T13:21:33Z WRN Serve tunnel error error="timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.43
+2025-07-30T13:21:33Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.43
+2025-07-30T13:21:34Z WRN Failed to serve tunnel connection error="context canceled" connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T13:21:34Z INF Retrying connection in up to 1s connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T13:21:34Z ERR  error="timeout: no recent network activity" connIndex=2 event=1 ingressRule=0 originService=http://localhost:80
+2025-07-30T13:21:34Z ERR Request failed error="timeout: no recent network activity" connIndex=2 dest=https://a0.skincos.com.br/poll event=0 ip=198.41.200.193 type=http
+2025-07-30T13:21:34Z WRN Connection terminated error="context canceled" connIndex=2
+2025-07-30T13:21:35Z WRN Connection terminated error="timeout: no recent network activity" connIndex=0
+2025-07-30T13:21:39Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.73
+2025-07-30T13:21:39Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T13:21:45Z WRN Failed to dial a quic connection error="failed to dial to edge with quic: timeout: no recent network activity" connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T13:21:45Z INF Retrying connection in up to 4s connIndex=2 event=0 ip=198.41.200.193
+2025-07-30T13:21:46Z WRN Connection terminated error="failed to dial to edge with quic: timeout: no recent network activity" connIndex=2
+2025-07-30T13:21:47Z INF Registered tunnel connection connIndex=0 connection=6b1b2e8b-8a8e-41eb-9faa-da11c5427791 event=0 ip=198.41.200.73 location=gru17 protocol=quic
