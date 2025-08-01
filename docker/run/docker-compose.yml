@@ -3,6 +3,6 @@ services:
     container_name: agent-zero
     image: agent0ai/agent-zero:latest
     volumes:
-      - ./agent-zero:/a0
+      - ../../:/a0
     ports:
-      - "50080:80"
+      - "8082:80"
