@@ -4,12 +4,13 @@ import json
 import os
 import re
 import subprocess
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal, TypedDict, cast
 
 import models
 from python.helpers import runtime, whisper, defer, git
 from . import files, dotenv
 from python.helpers.print_style import PrintStyle
+from python.helpers.providers import get_providers
 
 
 class Settings(TypedDict):
@@ -49,9 +50,24 @@ class Settings(TypedDict):
     browser_model_vision: bool
     browser_model_kwargs: dict[str, str]
 
-    agent_prompts_subdir: str
+    agent_profile: str
     agent_memory_subdir: str
     agent_knowledge_subdir: str
+
+    memory_recall_enabled: bool
+    memory_recall_interval: int
+    memory_recall_history_len: int
+    memory_recall_memories_max_search: int
+    memory_recall_solutions_max_search: int
+    memory_recall_memories_max_result: int
+    memory_recall_solutions_max_result: int
+    memory_recall_similarity_threshold: float
+    memory_recall_query_prep: bool
+    memory_recall_post_filter: bool
+    memory_memorize_enabled: bool
+    memory_memorize_consolidation: bool
+    memory_memorize_replace_threshold: float
+    
 
     api_keys: dict[str, str]
 
@@ -122,8 +138,8 @@ SETTINGS_FILE = files.get_abs_path("tmp/settings.json")
 _settings: Settings | None = None
 
 
+
 def convert_out(settings: Settings) -> SettingsOutput:
-    from models import ModelProvider
     default_settings = get_default_settings()
 
     # main model section
@@ -135,7 +151,7 @@ def convert_out(settings: Settings) -> SettingsOutput:
             "description": "Select provider for main chat model used by Agent Zero",
             "type": "select",
             "value": settings["chat_model_provider"],
-            "options": [{"value": p.name, "label": p.value} for p in ModelProvider],
+            "options": cast(list[FieldOption], get_providers("chat")),
         }
     )
     chat_model_fields.append(
@@ -248,7 +264,7 @@ def convert_out(settings: Settings) -> SettingsOutput:
             "description": "Select provider for utility model used by the framework",
             "type": "select",
             "value": settings["util_model_provider"],
-            "options": [{"value": p.name, "label": p.value} for p in ModelProvider],
+            "options": cast(list[FieldOption], get_providers("chat")),
         }
     )
     util_model_fields.append(
@@ -328,7 +344,7 @@ def convert_out(settings: Settings) -> SettingsOutput:
             "description": "Select provider for embedding model used by the framework",
             "type": "select",
             "value": settings["embed_model_provider"],
-            "options": [{"value": p.name, "label": p.value} for p in ModelProvider],
+            "options": cast(list[FieldOption], get_providers("embedding")),
         }
     )
     embed_model_fields.append(
@@ -398,7 +414,7 @@ def convert_out(settings: Settings) -> SettingsOutput:
             "description": "Select provider for web browser model used by <a href='https://github.com/browser-use/browser-use' target='_blank'>browser-use</a> framework",
             "type": "select",
             "value": settings["browser_model_provider"],
-            "options": [{"value": p.name, "label": p.value} for p in ModelProvider],
+            "options": cast(list[FieldOption], get_providers("chat")),
         }
     )
     browser_model_fields.append(
@@ -499,8 +515,17 @@ def convert_out(settings: Settings) -> SettingsOutput:
     # api keys model section
     api_keys_fields: list[SettingsField] = []
 
-    for provider in ModelProvider:
-        api_keys_fields.append(_get_api_key_field(settings, provider.name.lower(), provider.value))
+    # Collect unique providers from both chat and embedding sections
+    providers_seen: set[str] = set()
+    for p_type in ("chat", "embedding"):
+        for provider in get_providers(p_type):
+            pid_lower = provider["value"].lower()
+            if pid_lower in providers_seen:
+                continue
+            providers_seen.add(pid_lower)
+            api_keys_fields.append(
+                _get_api_key_field(settings, pid_lower, provider["label"])
+            )
 
     api_keys_section: SettingsSection = {
         "id": "api_keys",
@@ -515,29 +540,15 @@ def convert_out(settings: Settings) -> SettingsOutput:
 
     agent_fields.append(
         {
-            "id": "agent_prompts_subdir",
-            "title": "A0 Prompts Subdirectory",
-            "description": "Subdirectory of /prompts folder to be used by default agent no. 0. Subordinate agents can be spawned with other subdirectories, that is on their superior agent to decide. This setting affects the behaviour of the top level agent you communicate with.",
+            "id": "agent_profile",
+            "title": "Default agent profile",
+            "description": "Subdirectory of /agents folder to be used by default agent no. 0. Subordinate agents can be spawned with other profiles, that is on their superior agent to decide. This setting affects the behaviour of the top level agent you communicate with.",
             "type": "select",
-            "value": settings["agent_prompts_subdir"],
+            "value": settings["agent_profile"],
             "options": [
                 {"value": subdir, "label": subdir}
-                for subdir in files.get_subdirectories("prompts")
+                for subdir in files.get_subdirectories("agents") if subdir != "_example"
             ],
-        }
-    )
-
-    agent_fields.append(
-        {
-            "id": "agent_memory_subdir",
-            "title": "Memory Subdirectory",
-            "description": "Subdirectory of /memory folder to use for agent memory storage. Used to separate memory storage between different instances.",
-            "type": "text",
-            "value": settings["agent_memory_subdir"],
-            # "options": [
-            #     {"value": subdir, "label": subdir}
-            #     for subdir in files.get_subdirectories("memory", exclude="embeddings")
-            # ],
         }
     )
 
@@ -560,6 +571,170 @@ def convert_out(settings: Settings) -> SettingsOutput:
         "title": "Agent Config",
         "description": "Agent parameters.",
         "fields": agent_fields,
+        "tab": "agent",
+    }
+
+
+    memory_fields: list[SettingsField] = []
+
+    memory_fields.append(
+        {
+            "id": "agent_memory_subdir",
+            "title": "Memory Subdirectory",
+            "description": "Subdirectory of /memory folder to use for agent memory storage. Used to separate memory storage between different instances.",
+            "type": "text",
+            "value": settings["agent_memory_subdir"],
+            # "options": [
+            #     {"value": subdir, "label": subdir}
+            #     for subdir in files.get_subdirectories("memory", exclude="embeddings")
+            # ],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_enabled",
+            "title": "Memory auto-recall enabled",
+            "description": "Agent Zero will automatically recall memories based on convesation context.",
+            "type": "switch",
+            "value": settings["memory_recall_enabled"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_query_prep",
+            "title": "Auto-recall AI query preparation",
+            "description": "Enables vector DB query preparation from conversation context by utility LLM for auto-recall. Improves search quality, adds 1 utility LLM call per auto-recall.",
+            "type": "switch",
+            "value": settings["memory_recall_query_prep"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_post_filter",
+            "title": "Auto-recall AI post-filtering",
+            "description": "Enables memory relevance filtering by utility LLM for auto-recall. Improves search quality, adds 1 utility LLM call per auto-recall.",
+            "type": "switch",
+            "value": settings["memory_recall_post_filter"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_interval",
+            "title": "Memory auto-recall interval",
+            "description": "Memories are recalled after every user or superior agent message. During agent's monologue, memories are recalled every X turns based on this parameter.",
+            "type": "range",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "value": settings["memory_recall_interval"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_history_len",
+            "title": "Memory auto-recall history length",
+            "description": "The length of conversation history passed to memory recall LLM for context (in characters).",
+            "type": "number",
+            "value": settings["memory_recall_history_len"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_similarity_threshold",
+            "title": "Memory auto-recall similarity threshold",
+            "description": "The threshold for similarity search in memory recall (0 = no similarity, 1 = exact match).",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "value": settings["memory_recall_similarity_threshold"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_memories_max_search",
+            "title": "Memory auto-recall max memories to search",
+            "description": "The maximum number of memories returned by vector DB for further processing.",
+            "type": "number",
+            "value": settings["memory_recall_memories_max_search"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_memories_max_result",
+            "title": "Memory auto-recall max memories to use",
+            "description": "The maximum number of memories to inject into A0's context window.",
+            "type": "number",
+            "value": settings["memory_recall_memories_max_result"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_solutions_max_search",
+            "title": "Memory auto-recall max solutions to search",
+            "description": "The maximum number of solutions returned by vector DB for further processing.",
+            "type": "number",
+            "value": settings["memory_recall_solutions_max_search"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_recall_solutions_max_result",
+            "title": "Memory auto-recall max solutions to use",
+            "description": "The maximum number of solutions to inject into A0's context window.",
+            "type": "number",
+            "value": settings["memory_recall_solutions_max_result"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_memorize_enabled",
+            "title": "Auto-memorize enabled",
+            "description": "A0 will automatically memorize facts and solutions from conversation history.",
+            "type": "switch",
+            "value": settings["memory_memorize_enabled"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_memorize_consolidation",
+            "title": "Auto-memorize AI consolidation",
+            "description": "A0 will automatically consolidate similar memories using utility LLM. Improves memory quality over time, adds 2 utility LLM calls per memory.",
+            "type": "switch",
+            "value": settings["memory_memorize_consolidation"],
+        }
+    )
+
+    memory_fields.append(
+        {
+            "id": "memory_memorize_replace_threshold",
+            "title": "Auto-memorize replacement threshold",
+            "description": "Only applies when AI consolidation is disabled. Replaces previous similar memories with new ones based on this threshold. 0 = replace even if not similar at all, 1 = replace only if exact match.",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "value": settings["memory_memorize_replace_threshold"],
+        }
+    )
+
+    memory_section: SettingsSection = {
+        "id": "memory",
+        "title": "Memory",
+        "description": "Configuration of A0's memory system. A0 memorizes and recalls memories automatically to help it's context awareness.",
+        "fields": memory_fields,
         "tab": "agent",
     }
 
@@ -849,6 +1024,7 @@ def convert_out(settings: Settings) -> SettingsOutput:
             util_model_section,
             browser_model_section,
             embed_model_section,
+            memory_section,
             speech_section,
             api_keys_section,
             auth_section,
@@ -932,6 +1108,8 @@ def normalize_settings(settings: Settings) -> Settings:
         else:
             try:
                 copy[key] = type(value)(copy[key])  # type: ignore
+                if isinstance(copy[key], str):
+                    copy[key] = copy[key].strip() # strip strings
             except (ValueError, TypeError):
                 copy[key] = value  # make default instead
 
@@ -945,8 +1123,8 @@ def _adjust_to_version(settings: Settings, default: Settings):
     # starting with 0.9, the default prompt subfolder for agent no. 0 is agent0
     # switch to agent0 if the old default is used from v0.8
     if "version" not in settings or settings["version"].startswith("v0.8"):
-        if "agent_prompts_subdir" not in settings or settings["agent_prompts_subdir"] == "default":
-            settings["agent_prompts_subdir"] = "agent0"
+        if "agent_profile" not in settings or settings["agent_profile"] == "default":
+            settings["agent_profile"] = "agent0"
 
 def _read_settings_file() -> Settings | None:
     if os.path.exists(SETTINGS_FILE):
@@ -990,11 +1168,9 @@ def _write_sensitive_settings(settings: Settings):
 
 
 def get_default_settings() -> Settings:
-    from models import ModelProvider
-
     return Settings(
         version=_get_version(),
-        chat_model_provider=ModelProvider.OPENROUTER.name,
+        chat_model_provider="openrouter",
         chat_model_name="openai/gpt-4.1",
         chat_model_api_base="",
         chat_model_kwargs={"temperature": "0"},
@@ -1004,8 +1180,8 @@ def get_default_settings() -> Settings:
         chat_model_rl_requests=0,
         chat_model_rl_input=0,
         chat_model_rl_output=0,
-        util_model_provider=ModelProvider.OPENROUTER.name,
-        util_model_name="openai/gpt-4.1-nano",
+        util_model_provider="openrouter",
+        util_model_name="openai/gpt-4.1-mini",
         util_model_api_base="",
         util_model_ctx_length=100000,
         util_model_ctx_input=0.7,
@@ -1013,22 +1189,35 @@ def get_default_settings() -> Settings:
         util_model_rl_requests=0,
         util_model_rl_input=0,
         util_model_rl_output=0,
-        embed_model_provider=ModelProvider.HUGGINGFACE.name,
+        embed_model_provider="huggingface",
         embed_model_name="sentence-transformers/all-MiniLM-L6-v2",
         embed_model_api_base="",
         embed_model_kwargs={},
         embed_model_rl_requests=0,
         embed_model_rl_input=0,
-        browser_model_provider=ModelProvider.OPENROUTER.name,
+        browser_model_provider="openrouter",
         browser_model_name="openai/gpt-4.1",
         browser_model_api_base="",
         browser_model_vision=True,
         browser_model_kwargs={"temperature": "0"},
+        memory_recall_enabled=True,
+        memory_recall_interval=3,
+        memory_recall_history_len=10000,
+        memory_recall_memories_max_search=12,
+        memory_recall_solutions_max_search=8,
+        memory_recall_memories_max_result=5,
+        memory_recall_solutions_max_result=3,
+        memory_recall_similarity_threshold=0.7,
+        memory_recall_query_prep=True,
+        memory_recall_post_filter=True,
+        memory_memorize_enabled=True,
+        memory_memorize_consolidation=True,
+        memory_memorize_replace_threshold=0.9,
         api_keys={},
         auth_login="",
         auth_password="",
         root_password="",
-        agent_prompts_subdir="agent0",
+        agent_profile="agent0",
         agent_memory_subdir="default",
         agent_knowledge_subdir="custom",
         rfc_auto_docker=True,
@@ -1206,12 +1395,11 @@ def get_runtime_config(set: Settings):
 
 
 def create_auth_token() -> str:
+    runtime_id = runtime.get_persistent_id()
     username = dotenv.get_dotenv_value(dotenv.KEY_AUTH_LOGIN) or ""
     password = dotenv.get_dotenv_value(dotenv.KEY_AUTH_PASSWORD) or ""
-    if not username or not password:
-        return "0"
     # use base64 encoding for a more compact token with alphanumeric chars
-    hash_bytes = hashlib.sha256(f"{username}:{password}".encode()).digest()
+    hash_bytes = hashlib.sha256(f"{runtime_id}:{username}:{password}".encode()).digest()
     # encode as base64 and remove any non-alphanumeric chars (like +, /, =)
     b64_token = base64.urlsafe_b64encode(hash_bytes).decode().replace("=", "")
     return b64_token[:16]

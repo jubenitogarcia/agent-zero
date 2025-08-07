@@ -221,9 +221,8 @@ def run():
             "/mcp": ASGIMiddleware(app=mcp_server.DynamicMcpProxy.get_instance()),  # type: ignore
         },
     )
-    PrintStyle().debug("Registered middleware for MCP and MCP token")
 
-    PrintStyle().debug(f"Starting server at {host}:{port}...")
+    PrintStyle().debug(f"Starting server at http://{host}:{port} ...")
 
     server = make_server(
         host=host,
@@ -246,14 +245,15 @@ def run():
 def init_a0():
     # initialize contexts and MCP
     init_chats = initialize.initialize_chats()
+    # only wait for init chats, otherwise they would seem to disappear for a while on restart
+    init_chats.result_sync()
+
     initialize.initialize_mcp()
     # start job loop
     initialize.initialize_job_loop()
     # preload
     initialize.initialize_preload()
 
-    # only wait for init chats, otherwise they would seem to dissapear for a while on restart
-    init_chats.result_sync()
 
 
 # run the internal server
