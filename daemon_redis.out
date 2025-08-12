@@ -1,0 +1,89 @@
+[2025-08-10 22:08:49,185] INFO webhook MainThread: Webhook API key protection DISABLED
+[2025-08-10 22:08:49,186] INFO webhook MainThread: Redis backend habilitado
+[2025-08-10 22:08:50,751] INFO httpx MainThread: HTTP Request: GET https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json "HTTP/1.1 200 OK"
+[2025-08-11 01:09:07,408] INFO daemon daemon-ui: Starting UI server
+[2025-08-11 01:09:07,409] INFO daemon daemon-worker: Starting Redis MessageWorker loop
+[2025-08-11 01:09:07,409] INFO daemon MainThread: All requested components started
+[2025-08-11 01:09:07,409] INFO daemon daemon-webhook: Starting webhook on 0.0.0.0:4000
+Initializing framework...[0m
+Starting server...[0m
+INFO:     Started server process [81800]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:4000 (Press CTRL+C to quit)
+[2025-08-11 01:09:07,562] INFO faiss.loader daemon-ui: Loading faiss.
+[2025-08-11 01:09:07,565] INFO message_worker daemon-worker: MessageWorker start loop backend=redis
+[2025-08-11 01:09:07,784] INFO faiss.loader daemon-ui: Successfully loaded faiss.
+[2025-08-11 01:09:07,799] INFO faiss daemon-ui: Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+
+[38;2;128;128;128mDebug: Registered middleware for MCP and MCP token[0m
+
+[38;2;128;128;128mDebug: Starting server at 0.0.0.0:80...[0m
+[2025-08-11 01:09:08,286] INFO werkzeug daemon-ui: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:80
+ * Running on http://192.168.15.9:80
+[2025-08-11 01:09:08,521] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+[2025-08-11 01:09:10,518] INFO sentence_transformers.SentenceTransformer Background: Use pytorch device_name: mps
+[2025-08-11 01:09:10,521] INFO sentence_transformers.SentenceTransformer Background: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Loading Whisper model: base[0m
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Loading Kokoro TTS model...[0m
+Batches: 100%|██████████| 1/1 [00:04<00:00,  4.72s/it]Batches: 100%|██████████| 1/1 [00:04<00:00,  4.75s/it]
+/Users/jubenitogarcia/Automation/a0/.venv/lib/python3.12/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+  warnings.warn(
+WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+Preload completed[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 01:10:09,853] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+
+[38;2;128;128;128mDebug: Changing timezone from None to America/Sao_Paulo[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 01:11:10,100] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 01:12:10,361] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 01:13:11,818] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop

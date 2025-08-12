@@ -1,5 +1,6 @@
 import argparse
 import inspect
+import os
 import secrets
 from typing import TypeVar, Callable, Awaitable, Union, overload, cast
 from python.helpers import dotenv, rfc, settings, files
@@ -62,7 +63,7 @@ def get_local_url():
 def get_runtime_id() -> str:
     global runtime_id
     if not runtime_id:
-        runtime_id = secrets.token_hex(8)   
+        runtime_id = secrets.token_hex(8)
     return runtime_id
 
 def get_persistent_id() -> str:
@@ -79,19 +80,35 @@ async def call_development_function(func: Callable[..., Awaitable[T]], *args, **
 async def call_development_function(func: Callable[..., T], *args, **kwargs) -> T: ...
 
 async def call_development_function(func: Union[Callable[..., T], Callable[..., Awaitable[T]]], *args, **kwargs) -> T:
+    # Short-circuit: if explicitly marked local host, skip RFC indirection
+    if os.getenv("AGENT_LOCAL_HOST", "0") == "1":
+        import logging
+        logging.getLogger("runtime").debug(f"AGENT_LOCAL_HOST=1 -> executing {func.__name__} locally (no RFC)")
+        if inspect.iscoroutinefunction(func):
+            return await func(*args, **kwargs)  # type: ignore
+        return func(*args, **kwargs)  # type: ignore
     if is_development():
         url = _get_rfc_url()
         password = _get_rfc_password()
         module = files.deabsolute_path(func.__code__.co_filename).replace("/", ".").removesuffix(".py") # __module__ is not reliable
-        result = await rfc.call_rfc(
-            url=url,
-            password=password,
-            module=module,
-            function_name=func.__name__,
-            args=list(args),
-            kwargs=kwargs,
-        )
-        return cast(T, result)
+        try:
+            result = await rfc.call_rfc(
+                url=url,
+                password=password,
+                module=module,
+                function_name=func.__name__,
+                args=list(args),
+                kwargs=kwargs,
+            )
+            return cast(T, result)
+        except Exception as e:
+            # Fallback to local execution when RFC server unreachable
+            import logging
+            logging.getLogger("runtime").warning(f"RFC call failed ({e}); falling back to local execution of {func.__name__}")
+            if inspect.iscoroutinefunction(func):
+                return await func(*args, **kwargs)  # type: ignore
+            else:
+                return func(*args, **kwargs)  # type: ignore
     else:
         if inspect.iscoroutinefunction(func):
             return await func(*args, **kwargs)
@@ -125,18 +142,18 @@ def _get_rfc_url() -> str:
 def call_development_function_sync(func: Union[Callable[..., T], Callable[..., Awaitable[T]]], *args, **kwargs) -> T:
     # run async function in sync manner
     result_queue = queue.Queue()
-    
+
     def run_in_thread():
         result = asyncio.run(call_development_function(func, *args, **kwargs))
         result_queue.put(result)
-    
+
     thread = threading.Thread(target=run_in_thread)
     thread.start()
     thread.join(timeout=30)  # wait for thread with timeout
-    
+
     if thread.is_alive():
         raise TimeoutError("Function call timed out after 30 seconds")
-    
+
     result = result_queue.get_nowait()
     return cast(T, result)
 

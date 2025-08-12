@@ -19,6 +19,9 @@ instruments/**
 !instruments/default/
 !instruments/default/**
 
+# Ensure deprecated custom queue module not copied
+queue.py
+
 # Keep .gitkeep markers anywhere
 !**/.gitkeep
 

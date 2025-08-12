@@ -1,9 +1,154 @@
 <div align="center">
 
 # `Agent Zero`
+docker pull agent0ai/agent-zero
+docker run -p 50001:80 agent0ai/agent-zero
 
 
-[![Agent Zero Website](https://img.shields.io/badge/Website-agent--zero.ai-0A192F?style=for-the-badge&logo=vercel&logoColor=white)](https://agent-zero.ai) [![Thanks to Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Thanks%20to%20Sponsors-FF69B4?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/agent0ai) [![Follow on X](https://img.shields.io/badge/X-Follow-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Agent0ai) [![Join our Discord](https://img.shields.io/badge/Discord-Join%20our%20server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/B8KZKNsPpj) [![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@AgentZeroFW) [![Connect on LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jan-tomasek/) [![Follow on Warpcast](https://img.shields.io/badge/Warpcast-Follow-5A32F3?style=for-the-badge)](https://warpcast.com/agent-zero) 
+
+[![Agent Zero Website](https://img.shields.io/badge/Website-agent--zero.ai-0A192F?style=for-the-badge&logo=vercel&logoColor=white)](https://agent-zero.ai) [![Thanks to Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Thanks%20to%20Sponsors-FF69B4?style=for-the-badge&logo=githubsponsors&logoColor=white)](https://github.com/sponsors/agent0ai) [![Follow on X](https://img.shields.io/badge/X-Follow-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Agent0ai) [![Join our Discord](https://img.shields.io/badge/Discord-Join%20our%20server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/B8KZKNsPpj) [![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@AgentZeroFW) [![Connect on LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jan-tomasek/) [![Follow on Warpcast](https://img.shields.io/badge/Warpcast-Follow-5A32F3?style=for-the-badge)](https://warpcast.com/agent-zero)
+### 🧪 Run Local (sem Docker)
+
+Para um fluxo rápido (UI apenas):
+```
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python prepare.py
+python run_ui.py --port=8080 --host=0.0.0.0
+```
+
+Webhook + worker (separados):
+```
+python webhook_server.py
+python worker.py
+```
+
+Teste webhook:
+```
+body='{"event":"message_received","timestamp":123,"message":{"id":"m1","direction":"inbound","body":"oi"}}'
+sig=$(echo -n "$body" | openssl dgst -sha256 -hmac AGZ_SECRET_123 | cut -d' ' -f2)
+curl -X POST http://localhost:4000/agent-zero/webhooks/whatsapp \
+    -H "Content-Type: application/json" -H "X-Signature: $sig" -d "$body"
+```
+
+### 🛠️ Daemon em Background (macOS)
+
+Arquivo unificado `az_daemon.py` roda UI + Webhook + Worker.
+
+Execução manual:
+```
+python az_daemon.py
+```
+LaunchAgent (persistente):
+```
+chmod +x scripts/install_launchd.sh
+./scripts/install_launchd.sh
+launchctl list | grep agentzero
+```
+Logs:
+```
+tail -f logs/daemon.out
+```
+Variáveis:
+```
+AGENT_DAEMON_WEBHOOK_PORT=4000
+AGENT_DAEMON_DISABLE_WEBHOOK=1
+AGENT_DAEMON_DISABLE_WORKER=1
+AGENT_DAEMON_DISABLE_UI=1
+```
+
+Smoke test:
+```
+chmod +x smoke.sh
+./smoke.sh
+```
+
+Teste rápido webhook (script helper):
+```
+chmod +x scripts/send_test_event.sh
+./scripts/send_test_event.sh "oi quero saber status pedido"
+```
+
+Verificação completa (fluxos: válido, duplicado, assinatura inválida, timestamp antigo):
+```
+chmod +x scripts/verify_integration.sh
+./scripts/verify_integration.sh
+```
+
+### 🌐 Modo Embutido (UI + Webhook no mesmo domínio)
+
+Para expor o webhook sob o mesmo host da UI (ex: `https://a0.seu-dominio.com.br/agent-zero/webhooks/whatsapp`) sem rodar `az_daemon.py` separado:
+```
+export WEBHOOK_EMBEDDED=1 WHATSAPP_WEBHOOK_SECRET=AGZ_SECRET_123 QUEUE_BACKEND=redis REDIS_URL=redis://localhost:6379/1
+python run_ui.py --host=0.0.0.0 --port=50001
+```
+Endpoints disponíveis então:
+```
+/agent-zero/webhooks/whatsapp
+/agent-zero/debug/stats
+/agent-zero/debug/events
+/agent-zero/debug/errors
+/agent-zero/debug/ping
+```
+Se `WEBHOOK_EMBEDDED=1` não for setado, continue usando o daemon separado na porta 4000.
+
+### �️ Execução Local (Sem RFC)
+
+Se estiver rodando diretamente no host (não Docker) e quiser evitar tentativas de conexão ao canal RFC (porta 55080), defina no seu `.env`:
+```
+AGENT_LOCAL_HOST=1
+```
+Isso instrui o runtime a executar chamadas de desenvolvimento diretamente, sem fallback de rede.
+
+### �🔐 Segurança Webhook
+
+Use `WHATSAPP_WEBHOOK_SECRET` (HMAC) e opcionalmente `WEBHOOK_API_KEY` para dupla validação. Cabeçalhos necessários:
+```
+X-Signature: <hex sha256 hmac do corpo>
+X-API-Key: <WEBHOOK_API_KEY>
+```
+
+### 📊 Métricas (Prometheus)
+
+Se `METRICS_ENABLED=1`, endpoint `GET /metrics` expõe:
+- `events_received_total{event_type}`
+- `events_duplicate_total{event_type}`
+- `events_processed_total{status}`
+- `events_intent_total{intent}`
+- `event_processing_latency_seconds` (histogram)
+
+Checar rapidamente:
+```
+curl -s http://localhost:4000/metrics | grep -E 'events_(received|processed|duplicate)_total'
+```
+Ative logging detalhado exportando `LOG_LEVEL=DEBUG` (ou ajuste no handler) para inspecionar o fluxo do `MessageWorker`.
+
+### 🐛 Debug de Últimos Eventos
+
+Endpoint (sempre habilitado):
+```
+curl -s http://localhost:4000/agent-zero/debug/events | jq
+```
+Retorna até 100 últimos eventos (ts, event_id, event_type, tenant, message_id).
+
+Observação Redis: contadores auxiliares diretos são gravados como chaves
+`stats:processed_success` e `stats:processed_failed` no database definido em
+`REDIS_URL` (ex: `redis://localhost:6379/1`). Para inspecionar:
+```
+redis-cli -n 1 GET stats:processed_success
+redis-cli -n 1 GET stats:processed_failed
+```
+Se usar `redis-cli` sem `-n` ele conecta no DB 0 e verá `(nil)` nas chaves.
+```
+
+### 🧪 Testes
+
+Instale dependências e rode:
+```
+pytest -q
+```
+
 
 
 ## Documentation:
@@ -190,7 +335,7 @@ docker run -p 50001:80 agent0ai/agent-zero
     - More space efficient on mobile
 - Streamable HTTP MCP servers support
 - LLM API URL added to models config for Azure, local and custom providers
-    
+
 
 ### v0.9.0 - Agent roles, backup/restore
 [Release video](https://www.youtube.com/watch?v=rMIe-TC6H-k)

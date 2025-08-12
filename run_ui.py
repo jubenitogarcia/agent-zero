@@ -28,6 +28,7 @@ if hasattr(time, 'tzset'):
 
 # initialize the internal Flask server
 webapp = Flask("app", static_folder=get_abs_path("./webui"), static_url_path="/")
+AGENT_ZERO_READY = False  # será marcado True ao final do init_a0
 webapp.secret_key = os.getenv("FLASK_SECRET_KEY") or secrets.token_hex(32)
 webapp.config.update(
     JSON_SORT_KEYS=False,
@@ -164,6 +165,23 @@ async def serve_index():
     )
 
 
+@webapp.route("/agent-zero/debug/ready", methods=["GET"])
+async def ready_endpoint():  # type: ignore
+    """Endpoint de readiness: retorna ready=true somente após init_a0 completar."""
+    from flask import jsonify
+    return jsonify({"ready": AGENT_ZERO_READY})
+
+@webapp.route("/ready", methods=["GET"])
+async def ready_short():  # type: ignore
+    from flask import jsonify
+    return jsonify({"ready": AGENT_ZERO_READY})
+
+@webapp.route("/healthz", methods=["GET"])
+async def healthz():  # type: ignore
+    from flask import jsonify
+    return jsonify({"status": "ok", "ready": AGENT_ZERO_READY})
+
+
 def run():
     PrintStyle().print("Initializing framework...")
 
@@ -172,6 +190,13 @@ def run():
     from werkzeug.serving import make_server
     from werkzeug.middleware.dispatcher import DispatcherMiddleware
     from a2wsgi import ASGIMiddleware, WSGIMiddleware
+    embedded_routes = {}
+    if os.getenv('WEBHOOK_EMBEDDED') == '1':
+        try:
+            from webhook_server import app as webhook_app  # FastAPI instance
+            embedded_routes['/agent-zero'] = ASGIMiddleware(app=webhook_app)  # type: ignore
+        except Exception as e:  # pragma: no cover
+            PrintStyle().print(f"Falha ao embutir webhook: {e}")
 
     PrintStyle().print("Starting server...")
 
@@ -215,14 +240,34 @@ def run():
         register_api_handler(webapp, handler)
 
     # add the webapp and mcp to the app
-    app = DispatcherMiddleware(
-        webapp,
-        {
-            "/mcp": ASGIMiddleware(app=mcp_server.DynamicMcpProxy.get_instance()),  # type: ignore
-        },
-    )
+    embedded_routes['/mcp'] = ASGIMiddleware(app=mcp_server.DynamicMcpProxy.get_instance())  # type: ignore
+    app = DispatcherMiddleware(webapp, embedded_routes)
+    PrintStyle().debug("Registered middleware for MCP and MCP token")
 
     PrintStyle().debug(f"Starting server at http://{host}:{port} ...")
+
+    # Se modo embutido e fila redis, iniciar worker em thread separada
+    if os.getenv('WEBHOOK_EMBEDDED') == '1':
+        try:
+            from config import get_settings as _gs
+            s = _gs()
+            if s.queue_backend == 'redis':
+                PrintStyle().print("Iniciando worker embutido (Redis)...")
+                def _start_worker_thread():
+                    try:
+                        from queues.redis_queue import build_queue as build_redis_queue
+                        from storage.processed_events_store import build_store as build_dedupe_store
+                        from workers.message_worker import MessageWorker
+                        q = build_redis_queue(s)
+                        ds = build_dedupe_store(s)
+                        import asyncio
+                        mw = MessageWorker(q, ds)
+                        asyncio.run(mw.start())
+                    except Exception as e:  # pragma: no cover
+                        PrintStyle().print(f"Worker embutido falhou: {e}")
+                threading.Thread(target=_start_worker_thread, name='embedded-worker', daemon=True).start()
+        except Exception as e:  # pragma: no cover
+            PrintStyle().print(f"Falha ao iniciar worker embutido: {e}")
 
     server = make_server(
         host=host,
@@ -254,6 +299,13 @@ def init_a0():
     # preload
     initialize.initialize_preload()
 
+    # Mark readiness
+    global AGENT_ZERO_READY
+    AGENT_ZERO_READY = True
+    try:
+        PrintStyle().print("AGENT_ZERO_READY=1 (init concluído)")
+    except Exception:
+        pass
 
 
 # run the internal server

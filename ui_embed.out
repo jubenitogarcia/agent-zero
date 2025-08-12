@@ -1,0 +1,975 @@
+Initializing framework...[0m
+[2025-08-11 18:10:36,948] INFO webhook MainThread: Webhook API key protection DISABLED
+[2025-08-11 18:10:36,950] INFO webhook MainThread: Redis backend habilitado
+Starting server...[0m
+[2025-08-11 18:10:37,012] INFO faiss.loader MainThread: Loading faiss.
+[2025-08-11 18:10:37,076] INFO faiss.loader MainThread: Successfully loaded faiss.
+[2025-08-11 18:10:37,083] INFO faiss MainThread: Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes. This is only an error if you're trying to use GPU Faiss.
+
+[38;2;128;128;128mDebug: Registered middleware for MCP and MCP token[0m
+
+[38;2;128;128;128mDebug: Starting server at 0.0.0.0:50001...[0m
+Iniciando worker embutido (Redis)...[0m
+[2025-08-11 18:10:37,448] INFO werkzeug MainThread: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:50001
+ * Running on http://192.168.15.8:50001
+[2025-08-11 18:10:37,450] INFO message_worker embedded-worker: MessageWorker start loop backend=redis
+[2025-08-11 18:10:37,665] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+AGENT_ZERO_READY=1 (init concluído)[0m
+[2025-08-11 18:10:42,655] INFO sentence_transformers.SentenceTransformer Background: Use pytorch device_name: mps
+[2025-08-11 18:10:42,668] INFO sentence_transformers.SentenceTransformer Background: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+
+[38;2;128;128;128mDebug: Changing timezone from None to America/Sao_Paulo[0m
+Loading Whisper model: base[0m
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Loading Kokoro TTS model...[0m
+Batches: 100%|██████████| 1/1 [00:05<00:00,  5.56s/it]Batches: 100%|██████████| 1/1 [00:05<00:00,  5.58s/it]
+/Users/jubenitogarcia/Automation/a0/.venv/lib/python3.12/site-packages/torch/nn/modules/rnn.py:123: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+  warnings.warn(
+WARNING: Defaulting repo_id to hexgrad/Kokoro-82M. Pass repo_id='hexgrad/Kokoro-82M' to suppress this warning.
+Preload completed[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:11:38,029] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:12:38,684] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:13:39,271] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:14:39,751] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:15:40,089] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:16:40,859] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:17:41,241] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:18:41,607] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:19:41,950] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:20:42,338] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:21:42,692] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:22:43,081] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:23:43,484] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:24:43,844] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:25:44,215] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:26:44,550] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:27:44,942] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:28:45,270] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:29:45,634] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:30:46,006] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:31:46,403] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:32:46,783] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+[1m[38;2;255;255;255m[48;2;108;52;131mUser message:[0m
+[38;2;255;255;255m> Oie! Tudo bem?[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:33:24,853] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+Initializing VectorDB...[0m
+[2025-08-11 18:33:24,903] INFO sentence_transformers.SentenceTransformer AgentContext: Use pytorch device_name: mps
+[2025-08-11 18:33:24,903] INFO sentence_transformers.SentenceTransformer AgentContext: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Found 2 knowledge files in /Users/jubenitogarcia/Automation/a0/knowledge/default/main, processing...[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Processed 0 documents from 0 files.[0m
+Found 1 knowledge files in /Users/jubenitogarcia/Automation/a0/instruments, processing...[0m
+Processed 0 documents from 0 files.[0m
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][2025-08-11 18:33:28,723] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[2025-08-11 18:33:28,737] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  1.20it/s]
+Batches: 100%|██████████| 1/1 [00:00<00:00,  1.17it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.45it/s]
+[2025-08-11 18:33:31,657] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[3m[38;2;179;255;217mResponse: [0m
+[3m[38;2;179;255;217m{
+    "thoughts": [
+        "The user sent a greeting. My behavioral rules state that I should not include greetings when generating motivational phrases, but this is a general interaction, not a request for a motivational phrase.",
+        "As[0m[3m[38;2;179;255;217m a general AI assistant, I should respond appropriately to a friendly greeting.",
+        "I will use the `response` tool to reply to the user's greeting."
+    ],
+    "headline": "Responding to user's greeting",
+[0m[3m[38;2;179;255;217m    "tool_name": "response",
+    "tool_args": {
+        "text": "Olá! Tudo ótimo por aqui, e com você? 😊\n\nComo posso ajudar hoje?"
+    }
+}[0mhuggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:33:33,611] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[2025-08-11 18:33:33,737] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:33:46,884] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:34:47,195] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:35:47,622] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:36:47,985] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:37:48,416] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:38:48,743] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+
+[1m[38;2;255;255;255m[48;2;108;52;131mUser message:[0m
+[38;2;255;255;255m> @555180312128 @555182142207 podem imprimir 3 copias desse (1 em cada consultório + 1 na recepção).
+
+- Só mudou essa página, as demais seguem igual.
+
+- O arquivo completo está em "Consultoria -> Valores”[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:39:31,406] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][2025-08-11 18:39:31,481] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A[2025-08-11 18:39:32,711] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+Batches: 100%|██████████| 1/1 [00:03<00:00,  3.64s/it]
+Batches: 100%|██████████| 1/1 [00:03<00:00,  3.59s/it][ABatches: 100%|██████████| 1/1 [00:03<00:00,  3.65s/it]
+Batches: 100%|██████████| 1/1 [00:03<00:00,  3.60s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 37.93it/s]
+[2025-08-11 18:39:37,902] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[3m[38;2;179;255;217mResponse: [0m
+[3m[38;2;179;255;217m{
+    "thoughts": [
+        "The user wants to print 3 copies of a document located at 'Consultoria -> Valores'.",
+        "I need to first locate this file. I will start by searching for '[0m[3m[38;2;179;255;217mConsultoria' or 'Valores' in the file system.",
+        "Since I'm in a Linux container, I'll use the `find` command to search for the directory 'Consultoria' or a file named 'Val[0m[3m[38;2;179;255;217mores' within it.",
+        "If I find the file, I will then read its content to confirm the changes and then provide instructions on how the user can print it, or if there's a digital distribution method they prefer."
+    ],[0m[3m[38;2;179;255;217m
+    "headline": "Locating and preparing document for printing",
+    "tool_name": "code_execution_tool",
+    "tool_args": {
+        "runtime": "terminal",
+        "session": [0m[3m[38;2;179;255;217m0,
+        "code": "find / -name \"Consultoria\" 2>/dev/null || find / -name \"Valores\" 2>/dev/null"
+    }
+}[0m
+
+[1m[38;2;27;79;114m[48;2;255;255;255mA0: Using tool 'code_execution_tool'[0m
+[1m[38;2;133;193;233mRuntime: [0m[38;2;133;193;233mterminal[0m
+[0m
+[1m[38;2;133;193;233mSession: [0m[38;2;133;193;233m0[0m
+[0m
+[1m[38;2;133;193;233mCode: [0m[38;2;133;193;233mfind / -name "Consultoria" 2>/dev/null || find / -name "Valores" 2>/dev/null[0m
+[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:39:40,042] WARNING runtime AgentContext: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of _provide_root_password
+SSH Connection attempt 1...[0m
+SSH Connection attempt 2...[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:39:48,899] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+
+[38;2;255;0;0mTraceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 367, in monologue
+    tools_result = await self.process_tools(agent_response)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 756, in process_tools
+    response = await tool.execute(**tool_args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/python/tools/code_execution_tool.py", line 28, in execute
+    await self.prepare_state()
+  File "/Users/jubenitogarcia/Automation/a0/python/tools/code_execution_tool.py", line 132, in prepare_state
+    await shell.connect()
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/shell_ssh.py", line 64, in connect
+    raise e
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/shell_ssh.py", line 36, in connect
+    self.client.connect(
+  File "/Users/jubenitogarcia/Automation/a0/.venv/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 55022 on 127.0.0.1 or ::1
+
+
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 55022 on 127.0.0.1 or ::1[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+
+[38;2;255;0;0mError: API error: Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 367, in monologue
+    tools_result = await self.process_tools(agent_response)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 756, in process_tools
+    response = await tool.execute(**tool_args)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/python/tools/code_execution_tool.py", line 28, in execute
+    await self.prepare_state()
+  File "/Users/jubenitogarcia/Automation/a0/python/tools/code_execution_tool.py", line 132, in prepare_state
+    await shell.connect()
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/shell_ssh.py", line 64, in connect
+    raise e
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/shell_ssh.py", line 36, in connect
+    self.client.connect(
+  File "/Users/jubenitogarcia/Automation/a0/.venv/lib/python3.12/site-packages/paramiko/client.py", line 409, in connect
+    raise NoValidConnectionsError(errors)
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 55022 on 127.0.0.1 or ::1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/api.py", line 63, in handle_request
+    output = await self.process(input_data, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/python/api/message.py", line 14, in process
+    return await self.respond(task, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/python/api/message.py", line 17, in respond
+    result = await task.result()  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/defer.py", line 115, in result
+    return await loop.run_in_executor(None, _get_result)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/.pyenv/versions/3.12.4/lib/python3.12/asyncio/futures.py", line 287, in __await__
+    yield self  # This tells Task to wait for completion.
+    ^^^^^^^^^^
+  File "/Users/jubenitogarcia/.pyenv/versions/3.12.4/lib/python3.12/asyncio/tasks.py", line 385, in __wakeup
+    future.result()
+  File "/Users/jubenitogarcia/.pyenv/versions/3.12.4/lib/python3.12/asyncio/futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "/Users/jubenitogarcia/.pyenv/versions/3.12.4/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/python/helpers/defer.py", line 107, in _get_result
+    result = self._future.result(timeout)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/.pyenv/versions/3.12.4/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+
+>>>  17 stack lines skipped <<<
+
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 453, in handle_critical_exception
+    raise exception  # Re-raise the exception to kill the loop
+    ^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 196, in _process_chain
+    response = await agent.monologue()  # type: ignore
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 394, in monologue
+    self.handle_critical_exception(e)
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 453, in handle_critical_exception
+    raise exception  # Re-raise the exception to kill the loop
+    ^^^^^^^^^^^^^^^
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 382, in monologue
+    self.handle_critical_exception(e)
+  File "/Users/jubenitogarcia/Automation/a0/agent.py", line 473, in handle_critical_exception
+    raise HandledException(exception)  # Re-raise the exception to kill the loop
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+agent.HandledException: [Errno None] Unable to connect to port 55022 on 127.0.0.1 or ::1
+
+
+paramiko.ssh_exception.NoValidConnectionsError: [Errno None] Unable to connect to port 55022 on 127.0.0.1 or ::1[0m
+[2025-08-11 18:39:51,501] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[2025-08-11 18:39:51,766] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.96s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.97s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 30.02it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  9.45it/s]Batches: 100%|██████████| 1/1 [00:00<00:00,  9.42it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 50.18it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 12.00it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 58.27it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 63.92it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 40.96it/s]
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:40:49,222] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+
+[1m[38;2;255;255;255m[48;2;108;52;131mUser message:[0m
+[38;2;255;255;255m> Aqui ja foi impresso🙏🏻[0m
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:41:17,891] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][2025-08-11 18:41:18,495] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[2025-08-11 18:41:18,812] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+
+Batches:   0%|          | 0/1 [00:00<?, ?it/s][A
+Batches: 100%|██████████| 1/1 [00:00<00:00,  5.30it/s][ABatches: 100%|██████████| 1/1 [00:00<00:00,  5.28it/s]
+Batches: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]Batches: 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|██████████| 1/1 [00:00<00:00, 28.11it/s]
+[2025-08-11 18:41:20,655] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[3m[38;2;179;255;217mResponse: [0m
+[3m[38;2;179;255;217m{
+    "thoughts": [
+        "The user has confirmed that the printing task is complete.",
+        "I will acknowledge this and conclude the current interaction."
+    ],
+    "headline": "Printing task confirmed complete",
+    [0m[3m[38;2;179;255;217m"tool_name": "response",
+    "tool_args": {
+        "text": "Ótimo! Fico feliz em saber que as cópias já foram impressas. 🙏🏻"
+    }
+}[0mhuggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:41:22,351] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+[2025-08-11 18:41:22,629] INFO httpx AgentContext: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:streamGenerateContent?key=AIzaSyBYgByeSQAI2JSRtmJGAliLP3Q11eKGkgw&alt=sse "HTTP/1.1 200 OK"
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:41:49,546] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:42:55,412] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:43:55,546] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:44:55,968] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:45:56,525] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:46:56,875] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:47:57,406] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:48:57,814] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:49:58,162] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:50:58,455] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:51:58,766] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:52:59,123] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:53:59,423] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+huggingface/tokenizers: The current process just got forked, after parallelism has already been used. Disabling parallelism to avoid deadlocks...
+To disable this warning, you can either:
+	- Avoid using `tokenizers` before the fork if possible
+	- Explicitly set the environment variable TOKENIZERS_PARALLELISM=(true | false)
+[2025-08-11 18:54:59,783] WARNING runtime JobLoop: RFC call failed (Cannot connect to host localhost:55080 ssl:default [Multiple exceptions: [Errno 61] Connect call failed ('::1', 55080, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 55080)]); falling back to local execution of pause_loop
