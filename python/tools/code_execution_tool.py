@@ -118,18 +118,24 @@ class CodeExecution(Tool):
                         if self.agent.config.code_exec_ssh_pass
                         else await rfc_exchange.get_root_password()
                     )
-                    shell = SSHInteractiveSession(
-                        self.agent.context.log,
-                        self.agent.config.code_exec_ssh_addr,
-                        self.agent.config.code_exec_ssh_port,
-                        self.agent.config.code_exec_ssh_user,
-                        pswd,
-                    )
+                    try:
+                        shell = SSHInteractiveSession(
+                            self.agent.context.log,
+                            self.agent.config.code_exec_ssh_addr,
+                            self.agent.config.code_exec_ssh_port,
+                            self.agent.config.code_exec_ssh_user,
+                            pswd,
+                        )
+                        await shell.connect()
+                    except Exception:
+                        # Fallback to local shell
+                        shell = LocalInteractiveSession()
+                        self.agent.config.code_exec_ssh_enabled = False
+                        await shell.connect()
                 else:
                     shell = LocalInteractiveSession()
-
+                    await shell.connect()
                 shells[0] = shell
-                await shell.connect()
 
             self.state = State(shells=shells, docker=docker)
         self.agent.set_data("_cet_state", self.state)

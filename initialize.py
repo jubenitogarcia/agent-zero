@@ -79,7 +79,7 @@ def initialize_agent():
         memory_subdir=current_settings["agent_memory_subdir"],
         knowledge_subdirs=[current_settings["agent_knowledge_subdir"], "default"],
         mcp_servers=current_settings["mcp_servers"],
-        code_exec_docker_enabled=False,
+    code_exec_docker_enabled=False,
         # code_exec_docker_name = "A0-dev",
         # code_exec_docker_image = "agent0ai/agent-zero:development",
         # code_exec_docker_ports = { "22/tcp": 55022, "80/tcp": 55080 }
@@ -97,6 +97,12 @@ def initialize_agent():
 
     # update SSH and docker settings
     _set_runtime_config(config, current_settings)
+
+    # Environment override to re-enable SSH if really wanted
+    import os as _os
+    env_flag = _os.getenv("AGZ_CODE_EXEC_SSH", "0").strip().lower()
+    if env_flag in ("1", "true", "yes", "on"):
+        config.code_exec_ssh_enabled = True
 
     # update config with runtime args
     _args_override(config)

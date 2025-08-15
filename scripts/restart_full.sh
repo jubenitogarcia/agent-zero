@@ -1,15 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Restart Agent Zero (embedded) + Gateway WhatsApp
-# Usage: ./scripts/restart_full.sh [--no-clean] [--no-gateway]
+# Restart Agent Zero (embedded) + WhatsApp Gateway + CRM (API + Frontend)
+# Usage: ./scripts/restart_full.sh [--no-clean] [--no-gateway] [--no-crm] [--crm-port PORT] [--crm-api-port PORT]
 
 CLEAN_PROFILE=1
 START_GATEWAY=1
+START_CRM=1
+CRM_PORT=${CRM_PORT:-5173}
+CRM_API_PORT=${CRM_API_PORT:-3100}
 for a in "$@"; do
   case "$a" in
     --no-clean) CLEAN_PROFILE=0 ;;
     --no-gateway) START_GATEWAY=0 ;;
+    --no-crm) START_CRM=0 ;;
+    --crm-port)
+      shift; CRM_PORT="$1" ;;
+    --crm-api-port)
+      shift; CRM_API_PORT="$1" ;;
   esac
   shift || true
 done
@@ -17,6 +25,7 @@ done
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 GATEWAY_DIR="$ROOT_DIR/whatsapp-gateway"
 LOG_DIR="$ROOT_DIR"
+CRM_DIR="$ROOT_DIR/comprehensive-crm-so"
 
 printf "[restart] Stopping old processes...\n"
 pkill -f run_ui.py 2>/dev/null || true
@@ -24,6 +33,9 @@ pkill -f az_daemon.py 2>/dev/null || true
 pkill -f webhook_server.py 2>/dev/null || true
 pkill -f message_worker 2>/dev/null || true
 pkill -f bot_com_api.js 2>/dev/null || true
+# Kill generic node processes last (after specific) to avoid over‑killing unrelated dev tools
+pkill -f "src/api/server.js" 2>/dev/null || true
+pkill -f "vite" 2>/dev/null || true
 pkill -f node 2>/dev/null || true
 
 if [[ $CLEAN_PROFILE -eq 1 ]]; then
@@ -98,6 +110,38 @@ else
   echo "[restart] Skipped starting gateway (--no-gateway)"
 fi
 
-printf "[restart] PIDs -> UI:$UI_PID GW:${GW_PID:-skip}\n"
+if [[ $START_CRM -eq 1 ]]; then
+  echo "[restart] Starting CRM (API + Frontend) ..."
+  if [[ -d "$CRM_DIR" ]]; then
+    # Ensure dependencies (quick check for node_modules folder)
+    if [[ ! -d "$CRM_DIR/node_modules" ]]; then
+      echo "[restart][crm] Installing CRM dependencies (first run)..."
+      ( cd "$CRM_DIR" && npm install --no-audit --no-fund >/dev/null 2>&1 ) || echo "[restart][crm] WARN: npm install failed"
+    fi
+    # Start CRM API (Express)
+  PORT="$CRM_API_PORT" node "$CRM_DIR/src/api/server.js" > "$LOG_DIR/crm_api.out" 2>&1 &
+    CRM_API_PID=$!
+    # Start CRM Frontend (Vite dev server) specifying port
+    ( cd "$CRM_DIR" && npx vite --port "$CRM_PORT" --strictPort > "$LOG_DIR/crm_web.out" 2>&1 & )
+    CRM_WEB_PID=$!
+    sleep 3
+    if curl -sf "http://localhost:$CRM_API_PORT/api/conversations" >/dev/null 2>&1; then
+      echo "[restart][crm] API up on :$CRM_API_PORT"
+    else
+      echo "[restart][crm] WARN: CRM API not responding on :$CRM_API_PORT"
+    fi
+    if curl -sf "http://localhost:$CRM_PORT" >/dev/null 2>&1; then
+      echo "[restart][crm] Frontend up on :$CRM_PORT"
+    else
+      echo "[restart][crm] WARN: CRM Frontend not responding on :$CRM_PORT"
+    fi
+  else
+    echo "[restart][crm] Directory not found: $CRM_DIR (skipping)"
+  fi
+else
+  echo "[restart] Skipped CRM (--no-crm)"
+fi
 
-echo "[restart] Tail logs: tail -f ui_embed.out gw.out"
+printf "[restart] PIDs -> UI:$UI_PID GW:${GW_PID:-skip} CRM_API:${CRM_API_PID:-skip} CRM_WEB:${CRM_WEB_PID:-skip}\n"
+
+echo "[restart] Tail logs: tail -f ui_embed.out gw.out crm_api.out crm_web.out"
