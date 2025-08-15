@@ -41,3 +41,7 @@ instruments/**
 !**/.gitkeep
 agent_history.gif
 queue.py
+
+# Ignore runtime/output artifacts
+*.out
+scripts/logs/*.log
