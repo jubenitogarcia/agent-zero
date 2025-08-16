@@ -1,9 +1,9 @@
 import threading
 from flask import Flask, request
-from python.helpers import runtime, dotenv, process
-from python.helpers.print_style import PrintStyle
+from apps.agent_zero_core.python.helpers import runtime, dotenv, process
+from apps.agent_zero_core.python.helpers.print_style import PrintStyle
 
-from python.api.tunnel import Tunnel
+from apps.agent_zero_core.python.api.tunnel import Tunnel
 
 # initialize the internal Flask server
 app = Flask("app")

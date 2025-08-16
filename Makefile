@@ -74,30 +74,30 @@ lint: ## Run linting on all packages
 	@echo "$(BLUE)Running ESLint...$(RESET)"
 	$(NX) run-many --target=lint --all
 	@echo "$(BLUE)Running Python linting...$(RESET)"
-	flake8 python/ agents/ tests/ || echo "$(YELLOW)flake8 not available$(RESET)"
-	black --check python/ agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
+	flake8 apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)flake8 not available$(RESET)"
+	black --check apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
 
 lint-fix: ## Fix linting issues automatically
 	@echo "$(BLUE)Fixing ESLint issues...$(RESET)"
 	$(NX) run-many --target=lint --all --fix
 	@echo "$(BLUE)Fixing Python formatting...$(RESET)"
-	black python/ agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
-	isort python/ agents/ tests/ || echo "$(YELLOW)isort not available$(RESET)"
+	black apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
+	isort apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)isort not available$(RESET)"
 
 format: ## Format all code
 	@echo "$(BLUE)Formatting JavaScript/TypeScript...$(RESET)"
 	$(NPM) run format
 	@echo "$(BLUE)Formatting Python...$(RESET)"
-	black python/ agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
-	isort python/ agents/ tests/ || echo "$(YELLOW)isort not available$(RESET)"
+	black apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
+	isort apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)isort not available$(RESET)"
 
 format-check: ## Check code formatting
 	$(NPM) run format:check
-	black --check python/ agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
+	black --check apps/agent-zero-core/python/ apps/agent-zero-core/agents/ tests/ || echo "$(YELLOW)black not available$(RESET)"
 
 typecheck: ## Run type checking
 	$(NX) run-many --target=typecheck --all
-	mypy python/ agents/ || echo "$(YELLOW)mypy not available$(RESET)"
+	mypy apps/agent-zero-core/python/ apps/agent-zero-core/agents/ || echo "$(YELLOW)mypy not available$(RESET)"
 
 # Testing targets
 test: ## Run all tests
@@ -113,7 +113,7 @@ test-js: ## Run only JavaScript/TypeScript tests
 	$(NX) run-many --target=test --all
 
 test-coverage: ## Run tests with coverage
-	$(PYTHON) -m pytest tests/ --cov=python --cov=agents --cov-report=html --cov-report=term
+	$(PYTHON) -m pytest tests/ --cov=apps/agent-zero-core/python --cov=apps/agent-zero-core/agents --cov-report=html --cov-report=term
 
 test-integration: ## Run integration tests
 	./tools/scripts/verify_integration.sh

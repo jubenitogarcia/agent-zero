@@ -1,7 +1,7 @@
 import asyncio
-from python.helpers import runtime, whisper, settings
-from python.helpers.print_style import PrintStyle
-from python.helpers import kokoro_tts
+from apps.agent_zero_core.python.helpers import runtime, whisper, settings
+from apps.agent_zero_core.python.helpers.print_style import PrintStyle
+from apps.agent_zero_core.python.helpers import kokoro_tts
 import models
 
 
