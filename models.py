@@ -17,11 +17,11 @@ from typing import (
 from litellm import completion, acompletion, embedding
 import litellm
 
-from python.helpers import dotenv
-from python.helpers.dotenv import load_dotenv
-from python.helpers.providers import get_provider_config
-from python.helpers.rate_limiter import RateLimiter
-from python.helpers.tokens import approximate_tokens
+from apps.agent_zero_core.python.helpers import dotenv
+from apps.agent_zero_core.python.helpers.dotenv import load_dotenv
+from apps.agent_zero_core.python.helpers.providers import get_provider_config
+from apps.agent_zero_core.python.helpers.rate_limiter import RateLimiter
+from apps.agent_zero_core.python.helpers.tokens import approximate_tokens
 
 from langchain_core.language_models.chat_models import SimpleChatModel
 from langchain_core.outputs.chat_generation import ChatGenerationChunk

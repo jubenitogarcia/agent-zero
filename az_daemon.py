@@ -89,7 +89,7 @@ def start_ui():
     try:
         # ensure framework initialization (normally done in run_ui __main__)
         try:
-            from python.helpers import runtime, dotenv  # type: ignore
+            from apps.agent_zero_core.python.helpers import runtime, dotenv  # type: ignore
             runtime.initialize()
             dotenv.load_dotenv()
             # enforce default UI port if none provided (avoid accidental :80)

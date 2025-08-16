@@ -12,12 +12,12 @@ from typing import override
 from flask import Flask, request, Response, session
 from flask_basicauth import BasicAuth
 import initialize
-from python.helpers import errors, files, git, mcp_server
-from python.helpers.files import get_abs_path
-from python.helpers import runtime, dotenv, process
-from python.helpers.extract_tools import load_classes_from_folder
-from python.helpers.api import ApiHandler
-from python.helpers.print_style import PrintStyle
+from apps.agent_zero_core.python.helpers import errors, files, git, mcp_server
+from apps.agent_zero_core.python.helpers.files import get_abs_path
+from apps.agent_zero_core.python.helpers import runtime, dotenv, process
+from apps.agent_zero_core.python.helpers.extract_tools import load_classes_from_folder
+from apps.agent_zero_core.python.helpers.api import ApiHandler
+from apps.agent_zero_core.python.helpers.print_style import PrintStyle
 
 
 # Set the new timezone to 'UTC'
