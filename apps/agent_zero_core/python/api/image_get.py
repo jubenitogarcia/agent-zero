@@ -143,11 +143,11 @@ def _send_fallback_icon(icon_name):
     """Return fallback icon from public directory"""
 
     # Path to public icons
-    icon_path = files.get_abs_path(f"webui/public/{icon_name}.svg")
+    icon_path = files.get_abs_path(f"apps/webui/public/{icon_name}.svg")
 
     # Check if specific icon exists, fallback to generic file icon
     if not os.path.exists(icon_path):
-        icon_path = files.get_abs_path("webui/public/file.svg")
+        icon_path = files.get_abs_path("apps/webui/public/file.svg")
 
     # Final fallback if file.svg doesn't exist
     if not os.path.exists(icon_path):

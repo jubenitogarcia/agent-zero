@@ -2,8 +2,8 @@
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
-        "*": ["webui/*"]
+        "*": ["apps/webui/*"]
       }
     },
-    "include": ["webui/**/*.js"]
+    "include": ["apps/webui/**/*.js"]
   }
