@@ -1,7 +1,7 @@
-from python.helpers import dotenv, runtime, settings
+from apps.agent_zero_core.python.helpers import dotenv, runtime, settings
 import string
 import random
-from python.helpers.print_style import PrintStyle
+from apps.agent_zero_core.python.helpers.print_style import PrintStyle
 
 
 PrintStyle.standard("Preparing environment...")

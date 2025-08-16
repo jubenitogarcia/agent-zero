@@ -11,20 +11,20 @@ from enum import Enum
 import uuid
 import models
 
-from python.helpers import extract_tools, files, errors, history, tokens
-from python.helpers import dirty_json
-from python.helpers.print_style import PrintStyle
+from apps.agent_zero_core.python.helpers import extract_tools, files, errors, history, tokens
+from apps.agent_zero_core.python.helpers import dirty_json
+from apps.agent_zero_core.python.helpers.print_style import PrintStyle
 from langchain_core.prompts import (
     ChatPromptTemplate,
 )
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage
 
-import python.helpers.log as Log
-from python.helpers.dirty_json import DirtyJson
-from python.helpers.defer import DeferredTask
+import apps.agent_zero_core.python.helpers.log as Log
+from apps.agent_zero_core.python.helpers.dirty_json import DirtyJson
+from apps.agent_zero_core.python.helpers.defer import DeferredTask
 from typing import Callable
-from python.helpers.localization import Localization
-from python.helpers.extension import call_extensions
+from apps.agent_zero_core.python.helpers.localization import Localization
+from apps.agent_zero_core.python.helpers.extension import call_extensions
 
 class AgentContextType(Enum):
     USER = "user"
@@ -810,8 +810,8 @@ class Agent:
     def get_tool(
         self, name: str, method: str | None, args: dict, message: str, loop_data: LoopData | None, **kwargs
     ):
-        from python.tools.unknown import Unknown
-        from python.helpers.tool import Tool
+        from apps.agent_zero_core.python.tools.unknown import Unknown
+        from apps.agent_zero_core.python.helpers.tool import Tool
 
         classes = []
 
