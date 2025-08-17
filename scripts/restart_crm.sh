@@ -64,9 +64,15 @@ fi
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 CRM_DIR="$ROOT_DIR/comprehensive-crm-so"
+CRM_LOCAL_SCRIPT="$CRM_DIR/scripts/restart_crm.sh"
 LOG_DIR="$ROOT_DIR"
 API_LOG="$LOG_DIR/crm_api.out"
 WEB_LOG="$LOG_DIR/crm_web.out"
+
+if [[ -x "$CRM_LOCAL_SCRIPT" ]]; then
+  echo "[restart_crm] Aviso: este script foi movido para $CRM_LOCAL_SCRIPT. Usando o novo destino..."
+  exec "$CRM_LOCAL_SCRIPT" "$@"
+fi
 
 if [[ -n "$ENV_FILE" ]]; then
   if [[ -f "$ENV_FILE" ]]; then

@@ -132,7 +132,7 @@ parse_args() {
 setup_environment() {
     # Create log directory
     mkdir -p "$LOG_DIR"
-    
+
     # Setup environment variables
     export WEBHOOK_EMBEDDED=1
     export QUEUE_BACKEND=redis
@@ -145,7 +145,7 @@ setup_environment() {
     export AGZ_INTERNAL_BASE="http://localhost:$AGENT_ZERO_PORT"
     export AUTH_LOGIN=${AUTH_LOGIN:-admin}
     export AUTH_PASSWORD=${AUTH_PASSWORD:-admin}
-    
+
     # Activate virtual environment if it exists
     if [[ -f "$ROOT_DIR/.venv/bin/activate" ]]; then
         # shellcheck disable=SC1091
@@ -155,18 +155,18 @@ setup_environment() {
 
 kill_processes() {
     echo "[restart] Stopping existing processes..."
-    
+
     # Kill Agent Zero processes
     pkill -f "run_ui.py" 2>/dev/null || true
     pkill -f "az_daemon.py" 2>/dev/null || true
-    
+
     # Kill CRM processes
     pkill -f "comprehensive-crm-so/src/api/server.js" 2>/dev/null || true
     pkill -f "vite --port $CRM_PORT" 2>/dev/null || true
-    
+
     # Kill WhatsApp Gateway processes
     pkill -f "whatsapp-gateway" 2>/dev/null || true
-    
+
     sleep 2
     echo "[restart] Processes stopped"
 }
@@ -176,7 +176,7 @@ start_agent_zero() {
     python "$ROOT_DIR/run_ui.py" --port "$AGENT_ZERO_PORT" > "$LOG_DIR/agent_zero.out" 2>&1 &
     AGENT_PID=$!
     echo "[restart] Agent Zero PID: $AGENT_PID"
-    
+
     # Wait for readiness
     sleep 5
     if curl -sf "http://localhost:$AGENT_ZERO_PORT/agent-zero/debug/ping" >/dev/null; then
@@ -193,8 +193,14 @@ start_webui() {
 start_crm() {
     if [[ $START_CRM -eq 1 ]]; then
         echo "[restart] Starting CRM (port $CRM_PORT, API port $CRM_API_PORT)..."
-        # CRM startup logic would go here
-        echo "[restart] CRM services started"
+        local CRM_DIR="$ROOT_DIR/comprehensive-crm-so"
+        local CRM_SCRIPT="$CRM_DIR/scripts/restart_crm.sh"
+        if [[ -x "$CRM_SCRIPT" ]]; then
+            "$CRM_SCRIPT" --crm-port "$CRM_PORT" --crm-api-port "$CRM_API_PORT" --tail || true
+            echo "[restart] CRM services started"
+        else
+            echo "[restart] WARN: CRM script not found at $CRM_SCRIPT"
+        fi
     fi
 }
 
@@ -209,14 +215,14 @@ start_gateway() {
 main() {
     parse_args "$@"
     setup_environment
-    
+
     kill_processes
-    
+
     if [[ "${KILL_ONLY:-0}" -eq 1 ]]; then
         echo "[restart] Kill-only mode complete"
         exit 0
     fi
-    
+
     # Start requested services
     for service in "${SERVICES[@]}"; do
         case $service in
@@ -234,9 +240,9 @@ main() {
                 ;;
         esac
     done
-    
+
     echo "[restart] All requested services started"
-    
+
     if [[ "${TAIL_LOGS:-0}" -eq 1 ]]; then
         echo "[restart] Tailing logs (Ctrl+C to stop)..."
         tail -f "$LOG_DIR"/*.out 2>/dev/null || true

@@ -26,6 +26,9 @@ ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 GATEWAY_DIR="$ROOT_DIR/whatsapp-gateway"
 LOG_DIR="$ROOT_DIR"
 CRM_DIR="$ROOT_DIR/comprehensive-crm-so"
+CRM_LOCAL_SCRIPT="$CRM_DIR/scripts/restart_crm.sh"
+CRM_LOG_DIR="$CRM_DIR/logs"
+mkdir -p "$CRM_LOG_DIR"
 
 printf "[restart] Stopping old processes...\n"
 pkill -f run_ui.py 2>/dev/null || true
@@ -113,27 +116,21 @@ fi
 if [[ $START_CRM -eq 1 ]]; then
   echo "[restart] Starting CRM (API + Frontend) ..."
   if [[ -d "$CRM_DIR" ]]; then
-    # Ensure dependencies (quick check for node_modules folder)
-    if [[ ! -d "$CRM_DIR/node_modules" ]]; then
-      echo "[restart][crm] Installing CRM dependencies (first run)..."
-      ( cd "$CRM_DIR" && npm install --no-audit --no-fund >/dev/null 2>&1 ) || echo "[restart][crm] WARN: npm install failed"
-    fi
-    # Start CRM API (Express)
-  PORT="$CRM_API_PORT" node "$CRM_DIR/src/api/server.js" > "$LOG_DIR/crm_api.out" 2>&1 &
-    CRM_API_PID=$!
-    # Start CRM Frontend (Vite dev server) specifying port
-    ( cd "$CRM_DIR" && npx vite --port "$CRM_PORT" --strictPort > "$LOG_DIR/crm_web.out" 2>&1 & )
-    CRM_WEB_PID=$!
-    sleep 3
-    if curl -sf "http://localhost:$CRM_API_PORT/api/conversations" >/dev/null 2>&1; then
-      echo "[restart][crm] API up on :$CRM_API_PORT"
+    if [[ -x "$CRM_LOCAL_SCRIPT" ]]; then
+      "$CRM_LOCAL_SCRIPT" --crm-port "$CRM_PORT" --crm-api-port "$CRM_API_PORT" --tail || true
     else
-      echo "[restart][crm] WARN: CRM API not responding on :$CRM_API_PORT"
-    fi
-    if curl -sf "http://localhost:$CRM_PORT" >/dev/null 2>&1; then
-      echo "[restart][crm] Frontend up on :$CRM_PORT"
-    else
-      echo "[restart][crm] WARN: CRM Frontend not responding on :$CRM_PORT"
+      # Fallback antigo (caso script local não exista)
+      if [[ ! -d "$CRM_DIR/node_modules" ]]; then
+        echo "[restart][crm] Installing CRM dependencies (first run)..."
+        ( cd "$CRM_DIR" && npm install --no-audit --no-fund >/dev/null 2>&1 ) || echo "[restart][crm] WARN: npm install failed"
+      fi
+      PORT="$CRM_API_PORT" node "$CRM_DIR/src/api/server.js" > "$CRM_LOG_DIR/crm_api.out" 2>&1 &
+      CRM_API_PID=$!
+      ( cd "$CRM_DIR" && npx vite --port "$CRM_PORT" --strictPort > "$CRM_LOG_DIR/crm_web.out" 2>&1 & )
+      CRM_WEB_PID=$!
+      sleep 3
+      curl -sf "http://localhost:$CRM_API_PORT/api/conversations" >/dev/null 2>&1 && echo "[restart][crm] API up on :$CRM_API_PORT" || echo "[restart][crm] WARN: CRM API not responding on :$CRM_API_PORT"
+      curl -sf "http://localhost:$CRM_PORT" >/dev/null 2>&1 && echo "[restart][crm] Frontend up on :$CRM_PORT" || echo "[restart][crm] WARN: CRM Frontend not responding on :$CRM_PORT"
     fi
   else
     echo "[restart][crm] Directory not found: $CRM_DIR (skipping)"
@@ -144,4 +141,4 @@ fi
 
 printf "[restart] PIDs -> UI:$UI_PID GW:${GW_PID:-skip} CRM_API:${CRM_API_PID:-skip} CRM_WEB:${CRM_WEB_PID:-skip}\n"
 
-echo "[restart] Tail logs: tail -f ui_embed.out gw.out crm_api.out crm_web.out"
+echo "[restart] Tail logs: tail -f ui_embed.out gw.out $CRM_LOG_DIR/crm_api.out $CRM_LOG_DIR/crm_web.out"
